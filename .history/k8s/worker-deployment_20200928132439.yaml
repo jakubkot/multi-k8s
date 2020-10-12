@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      container: worker
+  template:
+    metadata:
+      labels:
+        container: worker
+    spec:
+      containers:
+      - name: worker
+        image: jakubkot/client-worker
+        ports:
+        - containerPort: <Port>
